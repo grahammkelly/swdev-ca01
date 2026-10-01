@@ -34,6 +34,13 @@ namespace CA01 {
         
         private Stats stats = new Stats();
 
+
+        public static void Main(string[] args) {
+            //Ignoring command line arguments for now
+            Hangman game = new Hangman();
+            game.Play();
+        }
+
         public Hangman(List<string> films) {
             this.AddFilms(films.ToList());
         }
@@ -105,7 +112,7 @@ namespace CA01 {
                 }
                 Console.WriteLine();
                 if (!IsValidResponse(response, 3u)) {
-                    Console.Error.WriteLine("Invalid input, please enter a number between 1 and 3.\n");
+                    Console.WriteLine("Invalid input, please enter a number between 1 and 3.\n");
                 }
             }
 

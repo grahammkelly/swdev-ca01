@@ -5,6 +5,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- comment this out if you want to run the test 'test-game.cs' instead of the Hangman game -->
+    <StartUpObject>CA01.Hangman</StartUpObject>
   </PropertyGroup>
 
 </Project>
