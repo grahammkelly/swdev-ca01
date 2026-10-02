@@ -39,12 +39,12 @@ allows you to run a single game without the predefined test guesses and without 
 To run these tests, in the same directory as above, for Mac or Linux run;
 
 ```bash
-dotnet run test-game.cs >/dev/null
+dotnet run test-game.cs > /dev/null
 ```
 
 This will redirect the output from the game itself and leave output from the tests only (pass or fail). 
 
-_I'm not familiar Windows, so not sure on console output redirection on Windows. Therefore, these instructions only cover Mac/Linux. you should be able to run the tests on Windows with `dotnet run test-game.cs` but output from the tests and game will be intermingled._
+_I'm not familiar Windows, so less sure on redirection there. This is untested (I don't have access to Windows) but redirect to `nul` (command prompt) or `$null` (powershell) instead of `/dev/null` should work there._
 
 ## License
 
