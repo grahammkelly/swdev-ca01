@@ -48,4 +48,4 @@ _I'm not familiar Windows, so less sure on redirection there. This is untested (
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details."
+This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
