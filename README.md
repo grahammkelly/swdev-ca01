@@ -1,6 +1,6 @@
 # Hangman
 
-This codebase defines a Hangman game implemented in C#. Was created for SW DEV module coursework. Continuous Assessment 01
+This codebase defines a terminal based Hangman game implemented in C#. Was created for SW DEV module coursework. Continuous Assessment 01.
 
 It includes the main game logic, game result handling, and test cases for verifying the game's functionality.
 
@@ -35,6 +35,16 @@ dotnet run
 Sample test cases for the `Game` class can be found in the `test-game.cs` file, which runs test instances of the 
 class and provides guesses. One run should 'win' a game, while the other should 'lose'. A commented out example also
 allows you to run a single game without the predefined test guesses and without the overall `Hangman` harness.
+
+To run these tests, in the same directory as above, for Mac or Linux run;
+
+```bash
+dotnet run test-game.cs >/dev/null
+```
+
+This will redirect the output from the game itself and leave output from the tests only (pass or fail). 
+
+_I'm not familiar Windows, so not sure on console output redirection on Windows. Therefore, these instructions only cover Mac/Linux. you should be able to run the tests on Windows with `dotnet run test-game.cs` but output from the tests and game will be intermingled._
 
 ## License
 
