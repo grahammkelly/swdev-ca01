@@ -32,25 +32,36 @@ To run the game, use:
 dotnet run
 ```
 
-Sample test cases for the `Game` class can be found in the `test-game.cs` file, which runs test instances of the 
+### Tests for the `Game` class
+
+Sample test cases for the `Game` class can be found in the `test-game.csx` file, which runs test instances of the 
 class and provides guesses without user interaction. One run should 'win' a game, while the other should 'lose'. 
 
-A commented out example also allows you to run a single game without the predefined test guesses and without
-the overall `Hangman` harness. 
-
-To run these tests, in the same directory as above, for Mac or Linux run;
+You will need the dotnet script module installed to run the `test-game.csx` file. You can install it using:
 
 ```bash
-dotnet run test-game.cs > /dev/null
+dotnet tool install -g dotnet-script
+```
+
+Run the tests using the following command (Linux and Mac only):
+
+```bash
+dotnet script test-game.csx >/dev/null
 ```
 
 This will redirect the output from the game itself and leave output from the tests only (pass or fail). 
 
-_I'm not familiar Windows, so less sure on redirection there. This is untested (I don't have access to Windows) but redirect to `nul` (command prompt) or `$null` (powershell) instead of `/dev/null` should work there._
+_I'm not familiar Windows, so less sure on redirection there. TI don't have access to Windows so this is untested but
+redirect to `nul` (command prompt) or `$null` (powershell) instead of `/dev/null` should work there._
 
-### Commented test
+!!! note "Error highlighted code in the `test-game.csx` file within Visual Studio Code"
 
-As mentioned, there also exists a commented test in the `test-game.cs`. As this test **does** interact with the user, if you uncomment this test, please remember to run the tests without redirecting STDIO.
+    On my VS Code, when the `test-game.csx` file is loaded, every line of code is shown as an error. This is because 
+    VS Code does not natively understand the C# script file format and treats it as a regular C# file, leading to syntax 
+    highlighting and error reporting issues.
+
+    Please disregard the error highlighting in VS Code if this occurs for you.
+
 
 ## License
 
