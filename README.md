@@ -37,6 +37,10 @@ dotnet run
 Sample test cases for the `Game` class can be found in the `test-game.csx` file, which runs test instances of the 
 class and provides guesses without user interaction. One run should 'win' a game, while the other should 'lose'. 
 
+I specifically did not use unit testing here. Firstly because we were specifically instructed to only use concepts 
+already covered inthe module. Additionally, I am familiar with JUnit/TestNG testing, but not unit testing concepts on
+.NET platforms.
+
 You will need the dotnet script module installed to run the `test-game.csx` file. You can install it using:
 
 ```bash
@@ -54,13 +58,12 @@ This will redirect the output from the game itself and leave output from the tes
 _I'm not familiar Windows, so less sure on redirection there. TI don't have access to Windows so this is untested but
 redirect to `nul` (command prompt) or `$null` (powershell) instead of `/dev/null` should work there._
 
-!!! note "Error highlighted code in the `test-game.csx` file within Visual Studio Code"
-
-    On my VS Code, when the `test-game.csx` file is loaded, every line of code is shown as an error. This is because 
-    VS Code does not natively understand the C# script file format and treats it as a regular C# file, leading to syntax 
-    highlighting and error reporting issues.
-
-    Please disregard the error highlighting in VS Code if this occurs for you.
+> [!WARNING]  
+> On my VS Code, when the `test-game.csx` file is loaded, every line of code is shown as an error. This is because VS 
+> Code does not natively understand the C# script file format and treats it as a regular C# file, leading to syntax 
+> highlighting and error reporting issues.
+>
+> Please disregard the error highlighting in VS Code for _this_ file if this occurs for you.
 
 
 ## License
