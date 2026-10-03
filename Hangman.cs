@@ -152,7 +152,15 @@ namespace CA01 {
 
         private void ReportStats() {
             Console.WriteLine($"\nStatistics for {playerName}:");
-            Console.WriteLine($"Played: {stats.TotalGames} - Won {stats.Won}, Lost {stats.Lost}\n");
+            uint totalGuesses = 0;
+            uint totalIncorrectGuesses = 0;
+            foreach (var result in stats.Games) {
+                totalGuesses += result.NumGuesses;
+                totalIncorrectGuesses += result.NumIncorrectGuesses;
+            }
+            float overallAccuracy = totalGuesses == 0 ? 0.0f : 
+                    (float)((totalGuesses - totalIncorrectGuesses) * 100 / (float)totalGuesses);
+            Console.WriteLine($"Played: {stats.TotalGames} - Won {stats.Won}, Lost {stats.Lost} [Overall Accuracy: {overallAccuracy:F1}%]\n");
             foreach (var result in stats.Games) {
                 Console.WriteLine($"\t{result.Word, -15}: {result.Result}\tGuesses: {result.NumGuesses} " + 
                         $"({result.NumIncorrectGuesses} incorrect) [{result.Accuracy:F1}% accurate]"); 
