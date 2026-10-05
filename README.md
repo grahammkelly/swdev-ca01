@@ -14,6 +14,13 @@ statistics, or exit.
 Statistics should list the number of games played, overall wins/losses, and list each game answer, whether they won or 
 lost and the number of guesses taken.
 
+## Methods
+
+The software was;
+* written on Mac (M1 Max, OS: Tahoe v26.6.2)
+* compiled and run against Microsoft .NET SDK 10.0.401
+* generated within Visual Studio Code 1.140.0 (commit [#07f806f999227108933c2e30515b26eecc1fda74](https://github.com/microsoft/vscode/tree/07f806f999227108933c2e30515b26eecc1fda74))
+
 ## Software requirements
 
 * .NET SDK 10.0+
