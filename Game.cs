@@ -129,6 +129,10 @@ namespace CA01
                 return true;        //Don't count this as an incorrect guess
             }
 
+            //Could also have used `ALPHABET.indexOf(upperC) >= 0` (above) or `Answer.indexOf(upperC) != -1` (below) to 
+            // check if the character is valid. But NOT for the `alreadyGuessed` check, as that is stored as a 
+            // Collection.
+
             //Not guessed before, check if it's in the answer and add to the CorrectGuesses array if it is
             if (Answer.Contains(upperC)) {
                 correctGuesses.Add(upperC);
@@ -144,6 +148,7 @@ namespace CA01
         private string ObfucateAnswer() {
             string displayStr = "";
 
+            //Easier than using String.Replace for each character
             foreach (char c in Answer) {
                 displayStr += (correctGuesses.Contains(c) ? c : '_');
             }
