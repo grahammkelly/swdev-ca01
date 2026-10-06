@@ -20,6 +20,17 @@ using System.Threading.Tasks;
 
 namespace CA01;
 
+/*
+ * This is a simple Hangman game implementation in C#.
+ * It includes a list of films as possible words to guess.
+ * The game keeps track of statistics such as games won and lost.
+ *
+ * Created using Clean code principles,
+ * - mostly no more than 1 level of nesting inside a method
+ * - methods are short and focused
+ * - meaningful method names, so don't need documentation on the method's purpose
+ */
+
 public class Stats {
     private List<GameResult> _results = new List<GameResult>();
     public uint Won { get; private set; }
@@ -138,9 +149,12 @@ public class Hangman {
 
         uint menuItem = PLAY_GAME;
         Random rnd = new Random();
-        while (menuItem == PLAY_GAME) {
-            stats.AddGame(new Game(films[rnd.Next(films.Count)], numGuessesAllowed).Play());
-            menuItem = PlayAgain();
+        for (string film = films[rnd.Next(films.Count)];
+                menuItem == PLAY_GAME && films.Count > 0;
+                film = films[rnd.Next(films.Count)]) {
+            stats.AddGame(new Game(film, numGuessesAllowed).Play());
+            films.Remove(film); //Don't allow this film to come up in a future game
+            menuItem = (films.Count > 0 ? PlayAgain() : VIEW_STATS);
         }
         
         //Report stats
@@ -150,6 +164,9 @@ public class Hangman {
         Console.WriteLine("Thank you for playing Hangman!");
     }
 
+    //The calling method should ensure there are films left to be played before invoking PlayAgain().
+    // Normally would check this assumption this within the method here, but as this is a private method we can rely on
+    // the calling method to ensure this.
     private uint PlayAgain() {
         uint response = 0;
         while (!IsValidResponse(response, 3u)) {
