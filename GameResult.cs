@@ -39,7 +39,7 @@ public class GameResult {
 
     public float Accuracy { 
         get { return NumGuesses == 0 ? 
-                0.0f : (float)((NumGuesses - NumIncorrectGuesses) * 100 / (float)NumGuesses); } 
+                0.0f : (float)((NumGuesses - NumIncorrectGuesses) / (float)NumGuesses); } 
     }
 
     public GameResult(string word, bool won, List<char> guesses, uint numIncorrectGuesses) {

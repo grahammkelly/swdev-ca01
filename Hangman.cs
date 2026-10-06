@@ -211,11 +211,11 @@ public class Hangman {
             totalIncorrectGuesses += result.NumIncorrectGuesses;
         }
         float overallAccuracy = totalGuesses == 0 ? 0.0f : 
-                (float)((totalGuesses - totalIncorrectGuesses) * 100 / (float)totalGuesses);
-        Console.WriteLine($"Played: {stats.TotalGames} - Won {stats.Won}, Lost {stats.Lost} [Overall Accuracy: {overallAccuracy:F1}%]\n");
+                (float)((totalGuesses - totalIncorrectGuesses) / (float)totalGuesses);
+        Console.WriteLine($"Played: {stats.TotalGames} - Won {stats.Won}, Lost {stats.Lost} [Overall Accuracy: {overallAccuracy:P1}]\n");
         foreach (var result in stats.Games) {
             Console.WriteLine($"\t{result.Word, -15}: {result.Result}\tGuesses: {result.NumGuesses} " + 
-                    $"({result.NumIncorrectGuesses} incorrect) [{result.Accuracy:F1}% accurate]"); 
+                    $"({result.NumIncorrectGuesses} incorrect) [{result.Accuracy:P1} accurate]"); 
         }
     }
 }
