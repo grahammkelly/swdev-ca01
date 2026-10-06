@@ -174,16 +174,25 @@ public class Hangman {
         uint response = 0;
         while (!IsValidResponse(response, 3u)) {
             Console.Write("\n1. Play again\n2. View stats\n3. Exit\nSelect an option: ");
-            try {
-                response = (uint)(Console.ReadKey().KeyChar - '0');
-            } catch {
-                //Unable to convert the input to a valid number, try again
-                response = 0;
-            }
-            Console.WriteLine();
-            if (!IsValidResponse(response, 3u)) {
-                Console.WriteLine("Invalid input, please enter a number between 1 and 3.\n");
-            }
+            response = tryGetResponse(3u);
+        }
+
+        return response;
+    }
+
+    //Extracted to reduce the nesting depth in `PlayAgain`. Tries to get a response and catches
+    // any error, defaulting to 0 in that case
+    private uint tryGetResponse(uint maxSelection) {
+        uint response;
+        try {
+            response = (uint)(Console.ReadKey().KeyChar - '0');
+        } catch {
+            //Unable to convert the input to a valid number, try again
+            response = 0;
+        }
+        Console.WriteLine();
+        if (!IsValidResponse(response, 3u)) {
+            Console.WriteLine($"Invalid input, please enter a number between 1 and {maxSelection}.\n");
         }
 
         return response;
