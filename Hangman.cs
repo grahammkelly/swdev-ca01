@@ -44,10 +44,7 @@ public class Hangman {
     private const uint EXIT = 3;
 
     private readonly List<string> films = new List<string>();
-    private readonly HashSet<uint> filmsAlreadyProvided = new();
 
-    private string playerName = "";
-    
     private Stats stats = new Stats();
 
 
@@ -134,7 +131,7 @@ public class Hangman {
     }
 
     public void Play() {
-        playerName = GetPlayerName();
+        string playerName = GetPlayerName();
 
         //Lets ask for thre number of guesses
         Console.WriteLine("How many incorrect guesses would you like to allow per game [0-10, default 6]? ");
@@ -153,7 +150,7 @@ public class Hangman {
         
         //Report stats
         if (menuItem == VIEW_STATS) {
-            ReportStats();
+            ReportStats(playerName);
         }
         Console.WriteLine("Thank you for playing Hangman!");
     }
@@ -193,7 +190,7 @@ public class Hangman {
         return name;
     }
 
-    private void ReportStats() {
+    private void ReportStats(string playerName) {
         Console.WriteLine($"\nStatistics for {playerName}:");
         uint totalGuesses = 0;
         uint totalIncorrectGuesses = 0;
