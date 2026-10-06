@@ -35,7 +35,6 @@ public class Stats {
             Won++;
         }
     }
-
 }
 
 public class Hangman {
@@ -47,11 +46,15 @@ public class Hangman {
 
     private Stats stats = new Stats();
 
-
     public static void Main(string[] args) {
+        uint desiredGuesses = 6u;
+        if (args.Length > 0) {
+            desiredGuesses = uint.Parse(args[0]);   //More than 6 or 7 is a joke, but whatever
+            Console.WriteLine($"Allowing {desiredGuesses} incorrect guesses.");
+        }
         //Ignoring command line arguments for now
         Hangman game = new Hangman();
-        game.Play();
+        game.Play(desiredGuesses);
     }
 
     public Hangman(List<string> films) {
@@ -123,28 +126,20 @@ public class Hangman {
             "Rosemary's Baby",
             "The Blair Witch Project",
         });
-    }
+    }   
 
     public Hangman AddFilms(List<string> films) {
         this.films.AddRange(films.ToList());
         return this;
     }
 
-    public void Play() {
+    public void Play(uint numGuessesAllowed) {
         string playerName = GetPlayerName();
-
-        //Lets ask for thre number of guesses
-        Console.WriteLine("How many incorrect guesses would you like to allow per game [0-10, default 6]? ");
-        uint numTries = 6;
-        string? input = Console.ReadLine();
-        if (!string.IsNullOrWhiteSpace(input) && uint.TryParse(input, out uint parsedTries)) {
-            numTries = (parsedTries <= 10 ? parsedTries : 6);
-        }
 
         uint menuItem = PLAY_GAME;
         Random rnd = new Random();
         while (menuItem == PLAY_GAME) {
-            stats.AddGame(new Game(films[rnd.Next(films.Count)], numTries).Play());
+            stats.AddGame(new Game(films[rnd.Next(films.Count)], numGuessesAllowed).Play());
             menuItem = PlayAgain();
         }
         
