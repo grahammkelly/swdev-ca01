@@ -168,8 +168,8 @@ public class Hangman {
     }
 
     //The calling method should ensure there are films left to be played before invoking PlayAgain().
-    // Normally would check this assumption this within the method here, but as this is a private method we can rely on
-    // the calling method to ensure this.
+    // Normally would check this assumption this within the method here, but as this is a private method
+    // we can rely on the calling method to ensure this.
     private uint PlayAgain() {
         uint response = 0;
         while (!IsValidResponse(response, 3u)) {
