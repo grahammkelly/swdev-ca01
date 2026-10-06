@@ -128,7 +128,7 @@ public class Hangman {
         });
     }   
 
-    public Hangman AddFilms(List<string> films) {
+    private Hangman AddFilms(List<string> films) {
         this.films.AddRange(films.ToList());
         return this;
     }
