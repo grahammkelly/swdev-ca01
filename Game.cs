@@ -20,6 +20,25 @@ using System.Threading.Tasks;
 
 namespace CA01;
 
+/*
+ * This is the Hangman game implementation in C#.
+ * One instantiation of this class will play a single game (which
+ * you can play multiple times, but it would be boring as the same
+ * word would be re-used).
+ *
+ * One thing to note. You can add a string of guesses to the class
+ * before initiating the game (_instance_.withTestGuesses()). In this
+ * case, the game just runs through the supplied guesses when you `Play()`.
+ * This was done for test purposes and no checks are done that the string
+ * contains enough characters to actually guess the word or to supply
+ * enough incorrect guesses. It's assumed that the tester should take
+ * care of that as it's a test consideration, NOT a real usage consideration.
+ *
+ * Created using Clean code principles,
+ * - mostly no more than 1 level of nesting inside a method
+ * - methods are short and focused
+ * - meaningful method names, so don't need documentation on the method's purpose
+ */
 public class Game {
     private const uint DEFAULT_MAX_TRIES = 4;
     private const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -80,7 +99,13 @@ public class Game {
 
     public Game(string answer) : this(answer, DEFAULT_MAX_TRIES) {}
 
-    // Allows me to test the game with a predefined sequence of guesses
+    // Allows me to test the game with a predefined sequence of guesses.
+    //
+    // Mentioned above, but no checks are made to ensure the guesses passed in here
+    // will contain enough characters to ensure either a correct guess or that all 
+    // tries occur. It's up to the caller to ensure that as it's a test consideration,
+    // NOT something that can occur in the real usage of the class.
+    //
     public Game withTestGuesses(string testGuesses) {
         // If playing a test game, we'll asssume the amount of guesses will exhaust the tries.
         this.testGuesses = testGuesses.ToUpper().ToCharArray();
@@ -154,7 +179,7 @@ public class Game {
         return displayStr;
     }
 
-    // Displays the obfuscated answer and the drawing of the man on the galllows.
+    // Displays the obfuscated answer and the drawing of the man on the gallows.
     // Returns true if the game is still ongoing, false if the game has ended.
     private bool DisplayCurrentState(uint failedGuesses) {
         bool guessedCorrectly = !currentState.Contains('_');
