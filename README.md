@@ -7,7 +7,7 @@ It includes the main game logic, game result handling, and test cases for verify
 The game should allow a player to guess letters in an attempt to reveal a hidden word, with a limited number of 
 incorrect guesses allowed before the game is lost. 
 
-* The amount of guesses a player is allowed is allowed to be set when initializing the game.
+* The amount of guesses a player is allowed is allowed to be set when initializing the game as a command line option
 * After each 'game', the overall game will loop and offer the player the ability to start a new game, view their 
 statistics, or exit.
 
@@ -30,14 +30,22 @@ The software was;
 To build the project, navigate to the project directory in your terminal and run:
 
 ```bash
-dotnet build
+$ dotnet build
 ```
 
 To run the game, use:
 
 ```bash
-dotnet run
+$ dotnet run
 ```
+
+To run the game, allowing a different number of guesses
+
+```bash
+$ dotnet run <number of guesses>
+```
+
+For example, to play, allowing only 3 guesses - `dotnet run 3`
 
 ### Tests for the `Game` class
 
