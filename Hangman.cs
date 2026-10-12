@@ -85,6 +85,7 @@ public class Hangman {
     //JIC I want to send in an array
     public Hangman(string[] films) : this(new HashSet<string>(films)) {}
 
+    // Removed apostrophes from the film titles as I only allow entry of aphabetic and digits
     public Hangman() : this(new HashSet<string> {
         "Star Wars",
         "The Godfather",
@@ -112,15 +113,15 @@ public class Hangman {
         "Dead Poets Society",
         "North by Northwest",
         "The Silence of the Lambs",
-        "Schindler's List",
+        "Schindlers List",
         "The Godfather Part II",
-        "One Flew Over the Cuckoo's Nest",
+        "One Flew Over the Cuckoos Nest",
         "Lawrence of Arabia",
         "The Wizard of Oz",
         "Citizen Kane",
         "Casablanca",
-        "Singin' in the Rain",
-        "It's a Wonderful Life",
+        "Singing in the Rain",
+        "Its a Wonderful Life",
         "Gone with the Wind",
         "Nosferatu",
         "Dracula",
