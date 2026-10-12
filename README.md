@@ -25,6 +25,26 @@ The software was;
 
 * .NET SDK 10.0+
 
+## Usage
+
+To play Hangman, the command line invokation is;
+
+```bash
+dotnet run [<number of guesses> [<film> <film>...]]
+```
+
+You MUST surrond multi-word film titles with quotes. Also, the game only allows alpha-numeric guesses (spaces are ignored!), so replace non-alphanumeric characters. For example "Spider-Man: No Way Home" should be entered as "SpiderMan No Way Home", and "Harry Potter & the Philosopher's Stone" should be entered as "Harry Potter and the Philosophers Stone", etc.
+
+So, to play with the defaiult number of guesses and film list, you would run: `dotnet run`.
+
+To play with the default film list but only allow 3 guesses, you would run: `dotnet run 3`.
+
+To play with a custom film list (e.g. 'Superman' and 'Jurassic Park') and 4 guesses, you would run: 
+
+```bash
+dotnet run 4 Superman "Jurassic Park"
+```
+
 ## Building and Running
 
 To build the project, navigate to the project directory in your terminal and run:

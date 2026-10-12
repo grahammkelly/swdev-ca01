@@ -63,8 +63,18 @@ public class Hangman {
             desiredGuesses = uint.Parse(args[0]);   //More than 6 or 7 is a joke, but whatever
             Console.WriteLine($"Allowing {desiredGuesses} incorrect guesses.");
         }
-        //Ignoring command line arguments for now
-        Hangman game = new Hangman();
+
+        Hangman game;
+        if (args.Length > 1) {
+            List<string> filmsToUse = new List<string>();
+            filmsToUse = args.ToList();
+            filmsToUse.RemoveAt(0); //Skipping the first arg as that's ALWAYS the number of guesses to allow
+            game = new Hangman(filmsToUse.ToArray());
+        }
+        else {
+            game = new Hangman();
+        }
+
         game.Play(desiredGuesses);
     }
 
@@ -138,6 +148,9 @@ public class Hangman {
         "Psycho",
         "Rosemary's Baby",
         "The Blair Witch Project",
+        "Alien",
+        "Aliens",
+        "Prometheus",
     }) {}
 
     private Hangman AddFilms(ISet<string> films) {
