@@ -45,6 +45,8 @@ To play with a custom film list (e.g. 'Superman' and 'Jurassic Park') and 4 gues
 dotnet run 4 Superman "Jurassic Park"
 ```
 
+**_Be aware that, if you are entering custom film titles, the first argument will ALWAYS be interpreted as the number of guesses allowed._**
+
 ## Building and Running
 
 To build the project, navigate to the project directory in your terminal and run:
