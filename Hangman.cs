@@ -166,14 +166,16 @@ public class Hangman {
 
         uint menuItem = PLAY_GAME;
         Random rnd = new Random();
-        for (string film = films[rnd.Next(films.Count)];
-                menuItem == PLAY_GAME && films.Count > 0;
-                film = films[rnd.Next(films.Count)]) {
+        
+        string film;
+        while ( menuItem == PLAY_GAME && films.Count > 0) {
+            film = films[rnd.Next(films.Count)];
+            
             stats.AddGame(new Game(film, numGuessesAllowed).Play());
             films.Remove(film); //Don't allow this film to come up in a future game
             menuItem = (films.Count > 0 ? PlayAgain() : VIEW_STATS);
         }
-        
+
         //Report stats
         if (menuItem == VIEW_STATS) {
             ReportStats(playerName);
