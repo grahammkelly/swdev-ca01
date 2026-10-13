@@ -63,8 +63,18 @@ public class Hangman {
             desiredGuesses = uint.Parse(args[0]);   //More than 6 or 7 is a joke, but whatever
             Console.WriteLine($"Allowing {desiredGuesses} incorrect guesses.");
         }
-        //Ignoring command line arguments for now
-        Hangman game = new Hangman();
+
+        Hangman game;
+        if (args.Length > 1) {
+            List<string> filmsToUse = new List<string>();
+            filmsToUse = args.ToList();
+            filmsToUse.RemoveAt(0); //Skipping the first arg as that's ALWAYS the number of guesses to allow
+            game = new Hangman(filmsToUse.ToArray());
+        }
+        else {
+            game = new Hangman();
+        }
+
         game.Play(desiredGuesses);
     }
 
@@ -75,6 +85,7 @@ public class Hangman {
     //JIC I want to send in an array
     public Hangman(string[] films) : this(new HashSet<string>(films)) {}
 
+    // Removed apostrophes from the film titles as I only allow entry of aphabetic and digits
     public Hangman() : this(new HashSet<string> {
         "Star Wars",
         "The Godfather",
@@ -102,15 +113,15 @@ public class Hangman {
         "Dead Poets Society",
         "North by Northwest",
         "The Silence of the Lambs",
-        "Schindler's List",
+        "Schindlers List",
         "The Godfather Part II",
-        "One Flew Over the Cuckoo's Nest",
+        "One Flew Over the Cuckoos Nest",
         "Lawrence of Arabia",
         "The Wizard of Oz",
         "Citizen Kane",
         "Casablanca",
-        "Singin' in the Rain",
-        "It's a Wonderful Life",
+        "Singing in the Rain",
+        "Its a Wonderful Life",
         "Gone with the Wind",
         "Nosferatu",
         "Dracula",
@@ -138,6 +149,9 @@ public class Hangman {
         "Psycho",
         "Rosemary's Baby",
         "The Blair Witch Project",
+        "Alien",
+        "Aliens",
+        "Prometheus",
     }) {}
 
     private Hangman AddFilms(ISet<string> films) {
@@ -152,14 +166,16 @@ public class Hangman {
 
         uint menuItem = PLAY_GAME;
         Random rnd = new Random();
-        for (string film = films[rnd.Next(films.Count)];
-                menuItem == PLAY_GAME && films.Count > 0;
-                film = films[rnd.Next(films.Count)]) {
+        
+        string film;
+        while ( menuItem == PLAY_GAME && films.Count > 0) {
+            film = films[rnd.Next(films.Count)];
+            
             stats.AddGame(new Game(film, numGuessesAllowed).Play());
             films.Remove(film); //Don't allow this film to come up in a future game
             menuItem = (films.Count > 0 ? PlayAgain() : VIEW_STATS);
         }
-        
+
         //Report stats
         if (menuItem == VIEW_STATS) {
             ReportStats(playerName);

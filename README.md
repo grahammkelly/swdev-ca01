@@ -25,7 +25,7 @@ The software was;
 
 * .NET SDK 10.0+
 
-## Building and Running
+## Building
 
 To build the project, navigate to the project directory in your terminal and run:
 
@@ -33,19 +33,27 @@ To build the project, navigate to the project directory in your terminal and run
 $ dotnet build
 ```
 
-To run the game, use:
+## General usage
+
+To play Hangman, the command line invokation is;
 
 ```bash
-$ dotnet run
+dotnet run [<number of guesses> [<film> <film>...]]
 ```
 
-To run the game, allowing a different number of guesses
+You MUST surrond multi-word film titles with quotes. Also, the game only allows alpha-numeric guesses (spaces are ignored!), so replace non-alphanumeric characters. For example "Spider-Man: No Way Home" should be entered as "SpiderMan No Way Home", and "Harry Potter & the Philosopher's Stone" should be entered as "Harry Potter and the Philosophers Stone", etc.
+
+So, to play with the defaiult number of guesses and film list, you would run: `dotnet run`.
+
+To play with the default film list but only allow 3 guesses, you would run: `dotnet run 3`.
+
+To play with a custom film list (e.g. 'Superman' and 'Jurassic Park') and 4 guesses, you would run: 
 
 ```bash
-$ dotnet run <number of guesses>
+dotnet run 4 Superman "Jurassic Park"
 ```
 
-For example, to play, allowing only 3 guesses - `dotnet run 3`
+**_Be aware that, if you are entering custom film titles, the first argument will ALWAYS be interpreted as the number of guesses allowed._**
 
 ### Tests for the `Game` class
 
