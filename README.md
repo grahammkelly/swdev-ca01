@@ -25,7 +25,15 @@ The software was;
 
 * .NET SDK 10.0+
 
-## Usage
+## Building
+
+To build the project, navigate to the project directory in your terminal and run:
+
+```bash
+$ dotnet build
+```
+
+## General usage
 
 To play Hangman, the command line invokation is;
 
@@ -46,28 +54,6 @@ dotnet run 4 Superman "Jurassic Park"
 ```
 
 **_Be aware that, if you are entering custom film titles, the first argument will ALWAYS be interpreted as the number of guesses allowed._**
-
-## Building and Running
-
-To build the project, navigate to the project directory in your terminal and run:
-
-```bash
-$ dotnet build
-```
-
-To run the game, use:
-
-```bash
-$ dotnet run
-```
-
-To run the game, allowing a different number of guesses
-
-```bash
-$ dotnet run <number of guesses>
-```
-
-For example, to play, allowing only 3 guesses - `dotnet run 3`
 
 ### Tests for the `Game` class
 
